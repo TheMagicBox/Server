@@ -75,7 +75,7 @@ export default function(opt) {
             return
         }
 
-        ctx.body = 'Request /:username for creating a tunnel.'
+        ctx.body = 'Request /:username to create a tunnel.'
     })
 
     // anything after the / path is a request for a specific client name

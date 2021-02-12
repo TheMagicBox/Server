@@ -28,7 +28,7 @@
   "scripts": {
     "start-mongo": "docker run --rm -d --name localtunnel_mongo -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=localtunnel -e MONGO_INITDB_ROOT_PASSWORD=localtunnel mongo",
     "stop-mongo": "docker stop localtunnel_mongo",
-    "start-node": "nodejs -r esm ./src/app.js --port 8080",
+    "start-node": "nodejs -r esm ./src/app.js --port 80",
     "start": "npm run start-mongo && npm run start-node"
   }
 }
