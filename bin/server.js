@@ -66,5 +66,3 @@ process.on('uncaughtException', (err) => {
 process.on('unhandledRejection', (reason, promise) => {
     log.error(reason);
 });
-
-// vim: ft=javascript
