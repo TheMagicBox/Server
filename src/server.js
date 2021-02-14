@@ -110,7 +110,11 @@ export default function(opt) {
             info.url = url
             ctx.body = info
         } catch (err) {
-            ctx.body = err
+            ctx.status = 401
+            ctx.body = {
+                message: err
+            }
+            return
         }
     })
 
