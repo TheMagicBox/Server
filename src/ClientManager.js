@@ -1,4 +1,3 @@
-import { hri } from 'human-readable-ids'
 import Debug from 'debug'
 import jwt from 'jsonwebtoken'
 

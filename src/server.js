@@ -1,28 +1,20 @@
-import log from 'book'
 import Koa from 'koa'
 import tldjs from 'tldjs'
 import Debug from 'debug'
 import http from 'http'
-import { hri } from 'human-readable-ids'
 import Router from 'koa-router'
 
 import ClientManager from './ClientManager'
 
 const debug = Debug('localtunnel:server')
 
-export default function(opt) {
+module.exports = opt => {
     opt = opt || {}
 
-    const validHosts = (opt.domain) ? [opt.domain] : undefined
+    const validHosts = opt.domain ? [opt.domain] : undefined
     const myTldjs = tldjs.fromUserSettings({ validHosts })
-    const landingPage = opt.landing
-
-    function GetClientIdFromHostname(hostname) {
-        return myTldjs.getSubdomain(hostname)
-    }
-
+    const getClientIdFromHostname = hostname => myTldjs.getSubdomain(hostname)
     const manager = new ClientManager(opt)
-
     const schema = opt.secure ? 'https' : 'http'
 
     const app = new Koa()
@@ -131,7 +123,7 @@ export default function(opt) {
             return
         }
 
-        const clientId = GetClientIdFromHostname(hostname)
+        const clientId = getClientIdFromHostname(hostname)
         if (!clientId) {
             appCallback(req, res)
             return
@@ -154,7 +146,7 @@ export default function(opt) {
             return
         }
 
-        const clientId = GetClientIdFromHostname(hostname)
+        const clientId = getClientIdFromHostname(hostname)
         if (!clientId) {
             socket.destroy()
             return

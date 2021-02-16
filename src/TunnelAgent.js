@@ -1,7 +1,6 @@
 import { Agent } from 'http'
 import net from 'net'
 import assert from 'assert'
-import log from 'book'
 import Debug from 'debug'
 
 const DEFAULT_MAX_SOCKETS = 10
@@ -59,7 +58,7 @@ class TunnelAgent extends Agent {
             if (err.code == 'ECONNRESET' || err.code == 'ETIMEDOUT') {
                 return
             }
-            log.error(err)
+            console.error(err)
         })
 
         return new Promise((resolve) => {
