@@ -23,7 +23,7 @@ db.mongoose.connect(url, {
     const options = {
         max_tcp_sockets: 10,
         secure: false,
-        port: 8080,
+        port: 80,
         address: '0.0.0.0'
     }
     const server = createServer(options)
